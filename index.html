@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is It A Match?</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f9;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        p.intro {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-box {
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 20px;
+        }
+
+        .question-box:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: 2px solid #333;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #333;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            font-style: italic;
+            min-height: 20px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        /* State colors */
+        .correct {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724 !important;
+        }
+       
+        .wrong {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hi, I'm Vidhya 👋</h1>
+    <p class="intro">Let's skip the small talk. Can you guess my vibe? No pressure, just for fun.</p>
+
+    <div class="quiz-container">
+
+        <div class="question-box" id="q1">
+            <div class="question-text">1. Guess what genre of books I read?</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, 'q1', false)">Instruction Manuals for Toasters</button>
+                <button onclick="checkAnswer(this, 'q1', true)">Silly Fiction / Fantasy</button>
+                <button onclick="checkAnswer(this, 'q1', false)">Only biographies of politicians</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-box" id="q2">
+            <div class="question-text">2. Guess what new thing I tried recently?</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, 'q2', true)">Fencing 🤺</button>
+                <button onclick="checkAnswer(this, 'q2', true)">Pickleball 🏓</button>
+                <button onclick="checkAnswer(this, 'q2', true)">Running a 5k 🏃‍♀️</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-box" id="q3">
+            <div class="question-text">3. How do I capture a sunrise?</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, 'q3', true)">With my Canon R10 📸</button>
+                <button onclick="checkAnswer(this, 'q3', false)">With my mind's eye (I forgot my camera)</button>
+                <button onclick="checkAnswer(this, 'q3', false)">I don't, I'm usually asleep</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-box" id="q4">
+            <div class="question-text">4. I'm a huge foodie, but there is a recent tragedy in my life...</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, 'q4', false)">I decided to become vegan</button>
+                <button onclick="checkAnswer(this, 'q4', true)">I became lactose intolerant (RIP Cheese)</button>
+                <button onclick="checkAnswer(this, 'q4', false)">I only eat raw kale now</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-box" id="q5">
+            <div class="question-text">5. Ideally, my Sunday morning looks like:</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, 'q5', true)">Coffee, Anime, and maybe a bike ride 🚲</button>
+                <button onclick="checkAnswer(this, 'q5', false)">Meal prepping for the whole week</button>
+                <button onclick="checkAnswer(this, 'q5', false)">Sleeping until 1 PM</button>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+    </div>
+ 
+    <div class="ps-section">
+        <h2>P.S. The Cheat Sheet 📝</h2>
+        <p class="ps-text" style="margin-bottom: 20px;">
+            I moved to the US in Jan 2022 🇺🇸 and it's been a total roller coaster! If you need conversation starters, here is the raw data:
+        </p>
+
+        <div class="ps-category">
+            <strong>📺 Anime & Animations</strong>
+            Naruto, One Piece, Avatar: The Last Airbender, Coco, Wall-E
+        </div>
+
+        <div class="ps-category">
+            <strong>🎬 Movie Classics</strong>
+            Singing in the Rain, Imitation Game, Rush Hour, Rang De Basanti
+        </div>
+
+        <div class="ps-category">
+            <strong>📚 Bookshelf</strong>
+            When Breath Becomes Air, The Alchemist, If Tomorrow Comes, Witness for the Prosecution
+        </div>
+
+        <div class="ps-category">
+            <strong>🍜 The Way to My Heart</strong>
+            Dosa, Parotta w/ Chicken, Sushi, Ramen, Tteokbokki
+        </div>
+
+        <div class="ps-category">
+            <strong>✨ Currently Obsessed With</strong>
+            His Dark Materials, The Gilded Age, Howl's Moving Castle, F1 Racing, Wicked (movie/musical), The Glass Castle, Pachinko
+        </div>
+    </div>
+    <br><br>
+
+    <script>
+        function checkAnswer(btn, questionId, isCorrect) {
+            const container = document.getElementById(questionId);
+            const feedbackBox = container.querySelector('.feedback');
+            const allButtons = container.querySelectorAll('button');
+
+            // Disable buttons after click so they can't spam click
+            allButtons.forEach(b => b.disabled = true);
+           
+            if (isCorrect) {
+                btn.classList.add('correct');
+               
+                // --- CORRECT ANSWERS ---
+                if (questionId === 'q1') feedbackBox.innerText = "Bingo! I love getting lost in a good story. But I read non-fiction too.";
+               
+                if (questionId === 'q2') feedbackBox.innerText = "Yay! All three are actually correct. (I'll be back to them once my injury heals!)";
+               
+                // New Sunrise Logic
+                if (questionId === 'q3') feedbackBox.innerText = "Spot on! It's my favorite gadget.";
+
+                if (questionId === 'q4') feedbackBox.innerText = "It's true 😭. I still eat it once in a while, I just suffer the consequences.";
+               
+                if (questionId === 'q5') feedbackBox.innerText = "Perfection. Caffeine and cartoons are life.";
+
+            } else {
+                btn.classList.add('wrong');
+               
+                // --- WRONG ANSWERS (HUMOROUS) ---
+                if (questionId === 'q1') {
+                    feedbackBox.innerText = "Not quite! But hey, not a deal breaker. Happy to just banter about books and characters!";
+                } else if (questionId === 'q3') {
+                    feedbackBox.innerText = "Good guess, but I actually go around with my camera. Just getting started with Photography!";
+                } else if (questionId === 'q4') {
+                    feedbackBox.innerText = "Wrong! The tragedy is that dairy hates me now. Not a deal breaker, we just need to find good dairy-free spots!";
+                } else if (questionId === 'q5') {
+                    feedbackBox.innerText = "Haha no way. But if you like sleeping in or cooking a yummy meal, you can count me in.";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
